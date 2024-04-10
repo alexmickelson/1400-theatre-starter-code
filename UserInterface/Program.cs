@@ -92,27 +92,32 @@ internal class Program
       if (choice == 3)//Daily Report
       {
         Console.Clear();
-        Console.WriteLine("***Concession Daily Report***");
-        List<DateOnly> avalibleDates = new();
-        foreach (var s in MovieTheater.ConcessionSaleList)
-        {
-          DateOnly temp = DateOnly.Parse($"{s.soldDateTime.Month}/{s.soldDateTime.Day}/{s.soldDateTime.Year}");
-          if (!avalibleDates.Contains(temp)) avalibleDates.Add(temp);
-        }
-        for (int i = 0; i < avalibleDates.Count; i++)
-        {
-          Console.WriteLine($"{i + 1,3}. {avalibleDates[i]}");
-        }
-        int index = getIntWillLoop("What date would you like to see? ", 0, avalibleDates.Count);
-        var dailyReportList = MovieTheater.ConcessionDailyReport(avalibleDates[index - 1]);
-        Console.Clear();
-        Console.WriteLine($"{"Name",-20}{"Revenue",-20}{"Sold Items",-20}{"Given Items",-20}");
-        foreach (var c in dailyReportList)
-        {
-          Console.WriteLine($"{c.name,-20}{c.revenue,-20:C2}{c.sold,-20}{c.givenAway,-20}");
-        }
-        PressKeyToContinue("\nPress any key to continue.");
+        Console.WriteLine(MovieTheater.ConcessionReport3_AllReceipts());
+        PressKeyToContinue("Hit any key to move on");
       }
+      // {
+      //   Console.Clear();
+      //   Console.WriteLine("***Concession Daily Report***");
+      //   List<DateOnly> avalibleDates = new();
+      //   foreach (var s in MovieTheater.ConcessionSaleList)
+      //   {
+      //     DateOnly temp = DateOnly.Parse($"{s.soldDateTime.Month}/{s.soldDateTime.Day}/{s.soldDateTime.Year}");
+      //     if (!avalibleDates.Contains(temp)) avalibleDates.Add(temp);
+      //   }
+      //   for (int i = 0; i < avalibleDates.Count; i++)
+      //   {
+      //     Console.WriteLine($"{i + 1,3}. {avalibleDates[i]}");
+      //   }
+      //   int index = getIntWillLoop("What date would you like to see? ", 0, avalibleDates.Count);
+      //   var dailyReportList = MovieTheater.ConcessionReport5_ItemTotalsPerDay(avalibleDates[index - 1]);
+      //   Console.Clear();
+      //   Console.WriteLine($"{"Name",-20}{"Revenue",-20}{"Sold Items",-20}{"Given Items",-20}");
+      //   foreach (var c in dailyReportList)
+      //   {
+      //     Console.WriteLine($"{c.name,-20}{c.revenue,-20:C2}{c.sold,-20}{c.givenAway,-20}");
+      //   }
+      //   PressKeyToContinue("\nPress any key to continue.");
+      // }
       if (choice == 4)//return to main menu
       {
         return;
@@ -125,8 +130,14 @@ internal class Program
     {
       Console.Clear();
       Console.WriteLine("***Concession Menu***");
-      string menu1 = "1-Menu\n2-Purchase Item\n3-Daily Report\n4-Return to Main Menu\nWhat would you like to do? ";
-      return getIntWillLoop(menu1, 1,4);
+      string menu1 =  "1-Display Items On Menu\n"+
+                      "2-Purchase Item\n"+
+                      "3-Display Receipts from All Sales\n"+
+                      "4-Display Revenue Totals For All Days\n"+
+                      "5-Display Item Revenue For A Given Day\n"+
+                      "6-Return to Main Menu\n"+
+                      "What would you like to do? ";
+      return getIntWillLoop(menu1, 1,6);
     }
   }
 
