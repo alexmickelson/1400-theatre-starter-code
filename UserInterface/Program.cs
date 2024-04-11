@@ -1,4 +1,5 @@
 ﻿
+using System.Data;
 using Shared;
 
 internal class Program
@@ -14,6 +15,7 @@ internal class Program
   {
     while (true)
     {
+      Console.Clear();
       Console.WriteLine("***Main Menu***");
       string menu = "1-Ticket Window\n" +
                       "2-Concession Stand\n" +
@@ -53,14 +55,15 @@ internal class Program
   {
     while (true)
     {
+      Console.Clear();
       Console.WriteLine("***Ticket Window Menu***");
-      string menu = "1-Purchase Ticket\n" +
-                      "2-Seat Availability\n" +
-                      "3-Daily Movies & Showtime Report\n" +
-                      "4-Preferred Customer Registration\n" +
-                      "5-Daily Ticket Sales Revenue Report\n" +
+      string menu = "1-View Menu Items\n" +
+                      "2-Purchase a Concession\n" +
+                      "3-All Sales Report\n" +
+                      "4-Reveneue Per Day Report\n" +
+                      "5-Item Sold for a Given Day\n" +
                       "6-Return to Main Menu\n" +
-                      "What would you like to do? ";
+                      "What would you like to do?";
       int choice = getIntWillLoop(menu, 1, 6);
       if (choice == 1)//Print Menu
       {

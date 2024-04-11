@@ -60,7 +60,7 @@ public class FileAccess
     File.WriteAllLines(filePath, fileLines);
   }
 
-  public static void WriteConcessionSalesData(List<ConcessionSaleTuple> soldTickets)
+  public static void WriteConcessionSalesData(List<ConcessionSaleTuple> soldConcessions)
   {
     string filePath = GetBasePath() + "ConcessionSalesData.txt";
     // TODO 
