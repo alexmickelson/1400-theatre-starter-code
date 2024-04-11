@@ -14,7 +14,15 @@ internal class Program
   {
     while (true)
     {
-      int choice = PrintMainMenu();
+      Console.WriteLine("***Main Menu***");
+      string menu = "1-Ticket Window\n" +
+                      "2-Concession Stand\n" +
+                      "3-Advertisement Controls\n" +
+                      "4-Scheduling Controls\n" +
+                      "5-Theaterwide Controls\n" +
+                      "6-Save and Exit\n" +
+                      "What would you like to do? ";
+      int choice = getIntWillLoop(menu, 1, 6);
       if (choice == 1)//Ticket Window
       {
         // TicketWindowMenu();
@@ -45,7 +53,15 @@ internal class Program
   {
     while (true)
     {
-      int choice = PrintConcessionMenu();
+      Console.WriteLine("***Ticket Window Menu***");
+      string menu = "1-Purchase Ticket\n" +
+                      "2-Seat Availability\n" +
+                      "3-Daily Movies & Showtime Report\n" +
+                      "4-Preferred Customer Registration\n" +
+                      "5-Daily Ticket Sales Revenue Report\n" +
+                      "6-Return to Main Menu\n" +
+                      "What would you like to do? ";
+      int choice = getIntWillLoop(menu, 1, 6);
       if (choice == 1)//Print Menu
       {
         Console.Clear();
@@ -74,11 +90,15 @@ internal class Program
       if (choice == 4)//Revenue Totals For All Days
       {
         Console.Clear();
+        Console.WriteLine(MovieTheater.ConcessionReport4_RevenueTotalsForAllDays());
         PressKeyToContinue("Hit any key to move on");
       }
       if (choice == 5)//Display Item Revenue For A Given Day
       {
         Console.Clear();
+        // Have the user input a date
+        
+        // Console.WriteLine(MovieTheater.ConcessionReport5_ItemTotalsPerDay(userDateVariableHere));
         PressKeyToContinue("Hit any key to move on");
       }
       if (choice == 6)//return to main menu
@@ -87,39 +107,13 @@ internal class Program
       }
     }
   }
-  public static int PrintConcessionMenu()
-  {
-    while (true)
-    {
-      Console.Clear();
-      Console.WriteLine("***Concession Menu***");
-      string menu1 = "1-Display Items On Menu\n" +
-                      "2-Purchase Item\n" +
-                      "3-Display Receipts from All Sales\n" +
-                      "4-Display Revenue Totals For All Days\n" +
-                      "5-Display Item Revenue For A Given Day\n" +
-                      "6-Return to Main Menu\n" +
-                      "What would you like to do? ";
-      return getIntWillLoop(menu1, 1, 6);
-    }
-  }
-
-  public static int PrintMainMenu()
-  {
-    while (true)
-    {
-      Console.Clear();
-      Console.WriteLine("***Main Menu***");
-      string menu1 = "1-Ticket Window\n2-Concession Stand\n3-Advertisment Controls\n4-Scheduling Controls\n5-Theaterwide Controls\n6-Save and Exit\nWhat would you like to do? ";
-      return getIntWillLoop(menu1, 1, 6);
-    }
-  }
 
   public static DateOnly getDateOnlyWillLoop(string prompt)
   {
     // todo
     return new DateOnly();
   }
+
   public static int getIntWillLoop(string prompt, int min, int max)
   {
     while (true)
@@ -136,11 +130,13 @@ internal class Program
       Console.Write("Invalid.  Please enter valid number: ");
     }
   }
+
   public static decimal getDecimalWillLoop(string prompt, int min, int max)
   {
     // todo
     return -1m;
   }
+  
   public static bool GetBoolWillLoop(string prompt)
   {
     while (true)
