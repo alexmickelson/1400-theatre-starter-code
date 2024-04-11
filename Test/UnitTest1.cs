@@ -62,22 +62,22 @@ public class UnitTest1
     }
 
     [Fact]
+    public void ConcessionDailyReportOption3_CanDisplaySales()
+    {
+        MovieTheater.ReadDataInFromAllFiles();
+        DateTime date = DateTime.Today;
+        MovieTheater.ConcessionSaleList = [(date, "Large Soda", 5, 50m, null)];
+        var dailyReport = MovieTheater.ConcessionReport3_AllReceipts();
+        Assert.Single(dailyReport);
+    }
+
+    [Fact]
     public void ConcessionDailyReportNoConcessionsPurchased()
     {
         MovieTheater.ReadDataInFromAllFiles();
         MovieTheater.ConcessionSaleList = new();
         var dailyReport = MovieTheater.ConcessionReport5_ItemTotalsPerDay(DateOnly.Parse("1/1/2001"));
         Assert.Empty(dailyReport);
-    }
-
-    [Fact]
-    public void ConcessionDailyReportOption3_CanDisplaySales()
-    {
-        MovieTheater.ReadDataInFromAllFiles();
-        DateTime date = DateTime.Today;
-        MovieTheater.ConcessionSaleList = [(date, "Large Soda", 5, 50m, null)];
-        var dailyReport = MovieTheater.ConcessionReport5_ItemTotalsPerDay(DateOnly.FromDateTime(date));
-        Assert.Single(dailyReport);
     }
 
 
